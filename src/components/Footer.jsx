@@ -13,11 +13,12 @@ const Footer = () => {
   const quickLinks = [
     { name: "About Us", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Tracking", href: "#" },
+    { name: "Tracking", href: "#tracking" },
     { name: "Contact", href: "#contact" },
   ];
 
   const services = [
+    { name: "Express Shipping", href: "#" },
     { name: "Ground Shipping", href: "#" },
     { name: "Air Freight", href: "#" },
     { name: "Ocean Freight", href: "#" },

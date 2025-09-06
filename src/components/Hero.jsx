@@ -1,5 +1,6 @@
 import { ArrowRight, Package, Clock, Shield } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -28,7 +29,9 @@ const Hero = () => {
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
-              <button className="btn-secondary">Track Shipment</button>
+              <Link href="#tracking" className="btn-secondary">
+                Track Shipment
+              </Link>
             </div>
 
             {/* Features */}

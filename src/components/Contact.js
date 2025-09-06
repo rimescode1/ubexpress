@@ -3,6 +3,7 @@
 import { MapPin, Phone, Mail, Clock, PhoneCallIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,9 +33,10 @@ const Contact = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      console.log(res, "dkdkdkdk");
 
       if (res.ok) {
-        alert("Message sent successfully ✅");
+        toast.success("Message sent successfully ✅");
         setFormData({
           firstName: "",
           lastName: "",
@@ -42,12 +44,9 @@ const Contact = () => {
           service: "",
           message: "",
         });
-      } else {
-        alert("Failed to send message ❌");
       }
     } catch (error) {
-      console.error("Error sending message:", error);
-      alert("Something went wrong ❌");
+      toast.error("Error sending message:", error.statusText);
     }
   };
   const contactInfo = [

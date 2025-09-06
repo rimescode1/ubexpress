@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
+import Tracking from "@/components/Tracking";
 import Head from "next/head";
 
 export default function Home() {
@@ -23,8 +24,8 @@ export default function Home() {
       <main className="min-h-screen">
         <Header />
         <Hero />
+        <Tracking />
         <Services />
-        <Stats />
         <About />
         <Contact />
         <Footer />
