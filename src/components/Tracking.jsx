@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { ClipLoader } from "react-spinners";
 import {
   Accordion,
   AccordionContent,
@@ -14,6 +15,7 @@ const Tracking = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isData, setIsData] = useState(false);
+  console.log(data, "SLSLSLLSL");
 
   const handleSubmitTracking = async () => {
     console.log();
@@ -21,18 +23,20 @@ const Tracking = () => {
       toast.error("Kindly Input your TRACKING ID");
       return;
     }
+    setIsLoading(true);
     try {
       const data = await axios.get(
         `www.ubxexpress.com/api/dhl?id=${trackingID}&service=express`
       );
       setData(data.data.data.shipments[0]);
       setIsData(true);
+      toast.success("Shipment Found");
       return;
     } catch (error) {
       toast.error(error);
       return;
     } finally {
-      setIsData(false);
+      setIsLoading(false);
     }
   };
 
@@ -56,8 +60,14 @@ const Tracking = () => {
                 placeholder="Enter tracking number"
                 className="w-full bg-transparent border border-white/30 rounded-lg px-4 py-3 text-black placeholder-white/70 focus:outline-none focus:border-ub-yellow"
               />
-              {isData ? (
-                <p>LOADING</p>
+              {isLoading ? (
+                <div className=" w-full  mt-4 flex justify-center items-center bg-red-700 rounded-md">
+                  <ClipLoader
+                    color="white"
+                    className=" w-full flex justify-center items-center"
+                  />
+                  <span>Loading...</span>
+                </div>
               ) : (
                 <button
                   onClick={handleSubmitTracking}
