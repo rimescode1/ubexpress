@@ -25,11 +25,11 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="btn-primary flex items-center justify-center">
+              {/* <button className="btn-primary flex items-center justify-center">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <Link href="#tracking" className="btn-secondary">
+              </button> */}
+              <Link href="#tracking" className="btn-primary">
                 Track Shipment
               </Link>
             </div>

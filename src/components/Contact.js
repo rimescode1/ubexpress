@@ -28,12 +28,11 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/send-mail", {
+      const res = await fetch("www.ubxexpress.com/api/send-mail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      console.log(res, "dkdkdkdk");
 
       if (res.ok) {
         toast.success("Message sent successfully ✅");

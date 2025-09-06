@@ -22,7 +22,9 @@ const Tracking = () => {
       return;
     }
     try {
-      const data = await axios.get(`/api/dhl?id=${trackingID}&service=express`);
+      const data = await axios.get(
+        `www.ubxexpress.com/api/dhl?id=${trackingID}&service=express`
+      );
       setData(data.data.data.shipments[0]);
       setIsData(true);
       return;

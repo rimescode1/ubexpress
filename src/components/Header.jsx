@@ -33,7 +33,7 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <button className="btn-primary">Get Quote</button>
+            {/* <button className="btn-primary">Get Quote</button> */}
           </div>
 
           {/* Mobile menu button */}
