@@ -81,7 +81,7 @@ const Tracking = () => {
         </div>
       </div>
       {isData && (
-        <div className="  shadow-2xl border border-gray-200 rounded-2xl">
+        <div className="  shadow-2xl border border-gray-200 rounded-md">
           <div className="  p-4 border border-black/5">
             <Accordion
               type="single"
@@ -102,21 +102,15 @@ const Tracking = () => {
                     Service Type:{" "}
                     <span className=" font-bold uppercase">{data.service}</span>{" "}
                   </p>
-                  {data.estimatedTimeOfDelivery ? (
+                  {data?.estimatedTimeOfDelivery ? (
                     <p>
-                      Estimated Delivery Date: {data.estimatedTimeOfDelivery}
+                      Estimated Delivery Date: {data?.estimatedTimeOfDelivery}
                     </p>
                   ) : null}
-                  {data.estimatedTimeOfDeliveryRemark ? (
+                  {data?.estimatedTimeOfDeliveryRemark ? (
                     <p>
                       Estimated Delivery Remark:
-                      {data.estimatedTimeOfDeliveryRemark}
-                    </p>
-                  ) : null}
-
-                  {data.proofOfDeliverySignedAvailable ? (
-                    <p>
-                      Proof of Delivery: {data.proofOfDeliverySignedAvailable}
+                      {data?.estimatedTimeOfDeliveryRemark}
                     </p>
                   ) : null}
                 </AccordionContent>
