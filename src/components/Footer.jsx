@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="flex items-center">
               <Truck className="h-8 w-8 text-ub-red mr-3" />
               <span className="text-2xl font-bold">
-                UB<span className="text-ub-red">EXPRESS</span>
+                UBX<span className="text-[#dc2626]">EXPRESS</span>
               </span>
             </div>
             <p className="text-black">

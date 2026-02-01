@@ -1,6 +1,6 @@
 import { Truck, Plane, Ship, Warehouse, Globe, Clock } from "lucide-react";
 
-const Services = () => {
+const Services = async () => {
   const services = [
     {
       icon: Truck,

@@ -38,11 +38,11 @@ const About = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-6">
-                About <span className="text-yellow-500">UBEXPRESS</span>
+                About <span className="text-yellow-500">UBXEXPRESS</span>
               </h2>
               <p className="text-lg text-gray-100 mb-6">
                 With over a decade of experience in the logistics industry,
-                UBEXPRESS has established itself as a leading provider of
+                UBXEXPRESS has established itself as a leading provider of
                 comprehensive shipping and supply chain solutions. We pride
                 ourselves on delivering exceptional service that exceeds
                 customer expectations.

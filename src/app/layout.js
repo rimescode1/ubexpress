@@ -12,8 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "UBXEXPRESS",
-  description: "Your Number 1 Express Shipping Service",
+  title: "UBXEXPRESS shipping",
+  description:
+    "Reliable DHL Shipping Solutions Through UBXEXPRESS Looking for DHL near you? UBXEXPRESS is a trusted logistics provider and shipping partner working with DHL to deliver fast, secure, and reliable domestic and international shipping solutions for businesses and individuals. With over a decade of experience in the logistics industry, UBXEXPRESS combines global reach with local expertise to ensure your shipments move seamlessly — from pickup to final delivery.",
+  keywords:
+    "DHL Near me, new dhl around me, dhl in my location, partnering with dhl",
 };
 
 export default function RootLayout({ children }) {

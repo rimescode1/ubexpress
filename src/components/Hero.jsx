@@ -2,7 +2,7 @@ import { ArrowRight, Package, Clock, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+const Hero = async () => {
   return (
     <section
       id="home"

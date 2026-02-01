@@ -6,6 +6,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,7 +15,6 @@ const Contact = () => {
     message: "",
   });
 
-  // update state when inputs change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -23,29 +23,32 @@ const Contact = () => {
     }));
   };
 
-  // submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsSubmitting(true);
     try {
       const res = await fetch("/api/send-mail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       if (res.ok) {
-        toast.success("Message sent successfully ✅");
+        toast.success("Message sent successfully!");
         setFormData({
           firstName: "",
           lastName: "",
           email: "",
-          service: "",
+          company: "",
+          volume: "",
           message: "",
         });
+      } else {
+        toast.error("Failed to send message.");
       }
-    } catch (error) {
-      toast.error("Error sending message:", error.statusText);
+    } catch {
+      toast.error("Error sending message: Please try again later");
+    } finally {
+      setIsSubmitting(false);
     }
   };
   const contactInfo = [

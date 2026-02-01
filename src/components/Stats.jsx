@@ -1,7 +1,7 @@
 const Stats = () => {
   const stats = [
     { number: "10K+", label: "Happy Customers", suffix: "" },
-    { number: "220", label: "Countries Served", suffix: "" },
+    { number: "220+", label: "Countries Served", suffix: "" },
     { number: "99.9", label: "Delivery Success Rate", suffix: "%" },
     { number: "24/7", label: "Customer Support", suffix: "" },
   ];
