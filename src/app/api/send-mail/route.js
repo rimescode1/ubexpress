@@ -24,7 +24,7 @@ export async function POST(req) {
               
               <!-- Header -->
               <div style="background-color: #dc2626; padding: 32px 24px; text-align: center;">
-                <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: bold; letter-spacing: -0.5px;">Ship Swift Express</h1>
+                <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: bold; letter-spacing: -0.5px; ">UBX EXPRESS LOGISTICS</h1>
                 <p style="color: #e2e8f0; margin: 8px 0 0 0; font-size: 14px;">New Service Inquiry</p>
               </div>
 
