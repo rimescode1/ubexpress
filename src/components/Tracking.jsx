@@ -10,6 +10,28 @@ import {
 import Image from "next/image";
 import axios from "axios";
 import toast from "react-hot-toast";
+// AAJ returns its own schema, map it onto the shape the UI already renders for DHL
+const normalizeAajShipment = (shipment) => ({
+  service: shipment.serviceType || "AAJ",
+  destination: {
+    address: {
+      addressLocality: shipment.receiverLocation
+        ? [shipment.receiverLocation.city, shipment.receiverLocation.country]
+            .filter(Boolean)
+            .join(", ")
+        : undefined,
+    },
+  },
+  estimatedTimeOfDelivery: shipment.eta?.dateOfArrival
+    ? new Date(shipment.eta.dateOfArrival).toLocaleDateString()
+    : undefined,
+  estimatedTimeOfDeliveryRemark: shipment.description,
+  events: (shipment.events || []).map((event) => ({
+    timestamp: event.dateTime,
+    description: event.description,
+  })),
+});
+
 const Tracking = () => {
   const [trackingID, setTrackingID] = useState("");
   const [data, setData] = useState([]);
@@ -18,20 +40,28 @@ const Tracking = () => {
   console.log(data, "SLSLSLLSL");
 
   const handleSubmitTracking = async () => {
-    console.log();
-    if (!trackingID) {
+    const id = trackingID.trim();
+    if (!id) {
       toast.error("Kindly Input your TRACKING ID");
       return;
     }
     setIsLoading(true);
+    // Auto-detect carrier: AAJ ids are 8 chars, DHL ids are 10 chars
+    const isAaj = id.length === 8;
     try {
-      const data = await axios.get(`/api/dhl?id=${trackingID}&service=express`);
-      setData(data.data.data.shipments[0]);
+      const { data: response } = await axios.get(
+        isAaj ? `/api/aaj?id=${id}` : `/api/dhl?id=${id}&service=express`
+      );
+      setData(
+        isAaj
+          ? normalizeAajShipment(response.data)
+          : response.data.shipments[0]
+      );
       setIsData(true);
       toast.success("Shipment Found");
       return;
     } catch (error) {
-      toast.error(error);
+      toast.error(error?.response?.data?.message || "Shipment not found");
       return;
     } finally {
       setIsLoading(false);
