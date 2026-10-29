@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+const WHATSAPP_NUMBER = "2349063359303";
+
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,33 +24,34 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/api/send-mail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
-        toast.success("Message sent successfully!");
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          company: "",
-          volume: "",
-          message: "",
-        });
-      } else {
-        toast.error("Failed to send message.");
-      }
-    } catch {
-      toast.error("Error sending message: Please try again later");
-    } finally {
-      setIsSubmitting(false);
-    }
+    const { firstName, lastName, email, service, message } = formData;
+
+    const text = [
+      "*New Inquiry from Website*",
+      "",
+      `*Name:* ${firstName} ${lastName}`,
+      `*Email:* ${email}`,
+      `*Service:* ${service}`,
+      "",
+      "*Message:*",
+      message,
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+      "_blank",
+    );
+
+    toast.success("Opening WhatsApp...");
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      service: "",
+      message: "",
+    });
   };
   const contactInfo = [
     {
@@ -94,7 +96,6 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <div className="bg-ub-gray rounded-xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Send us a Message
@@ -188,7 +189,6 @@ const Contact = () => {
             </form>
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
